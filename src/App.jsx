@@ -7,17 +7,23 @@ import arrowDown from "./assets/arrow-down.svg";
 
 function App() {
   const [data, setData] = useState(dataAccordion);
-  // const [showText, setShowText] = useState(-1);
-  const [showText, setShowText] = useState(-1);
+  const [showText, setShowText] = useState();
 
   const handleClick = (index) => {
-    setShowText(index);
+    setShowText((currentIndex)=>{
+      if(currentIndex === index){
+        return -1
+      }else{
+        return index
+      }
+    })    
   };
+
   return (
     <>
       <div className="App">
         <h1>Vite + React</h1>
-        <Button clase="primary" text={"Primary"} />
+        <Button clase="primary optionClass" text={"Primary"} />
         <span></span>
         <Button clase="success" text={"Sucess"} />
         <span></span>
@@ -28,16 +34,18 @@ function App() {
 
       {data.map((list, index) => (
         <div key={list.id} onClick={() => handleClick(index)}>
-          <div className="labelArrow">
+          <div>
+
             <h3>{list.label}</h3>
-            {/* {showText ===index? 'arrowLeft':'arrowTop' } */}
             {showText === index ? (
-              <img src={arrowDown} alt="arrowDown" />
-              ) : (
+              <>
+                <img className="dInline" src={arrowDown} alt="arrowDown" />
+                <p className="pepe">{list.content}</p>
+              </>
+            ) : (
               <img src={arrowLeft} alt="arrowLeft" />
             )}
           </div>
-          {index === showText ? <p className="pepe">{list.content}</p> : ""}
         </div>
       ))}
     </>

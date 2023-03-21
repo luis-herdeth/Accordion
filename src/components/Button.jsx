@@ -2,7 +2,7 @@ export const Button = ({text,clase}) => {
 
     return(
         <>
-         <button className={clase}>{text}</button>
+         <button className={`prueba ${clase}`}>{text}</button>
         </>
     )
 };

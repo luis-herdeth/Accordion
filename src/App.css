@@ -76,3 +76,9 @@ span{
 .labelArrow{
   display: flex;
 }
+.dInline{
+  display: inline;
+}
+.prueba{
+  color:indigo;
+}
